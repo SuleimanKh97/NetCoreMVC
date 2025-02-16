@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FisrstProject</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FisrstProject.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="شعار الموقع">
+        </div>
+        <nav>
+            <ul>
+                
+                <li><a asp-controller="Home" asp-action="Index.cshtml">الرئيسية</a></li>
+                <li><a href="about.html">عن الموقع</a></li>
+                <li><a href="categories.html">تصنيفات المواشي</a></li>
+                <li><a href="#">كيفية الشراء/البيع</a></li>
+                <li><a asp-controller="Home" asp-action="Contact.cshtml">اتصل بنا</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a asp-controller="Home" asp-action="Regestration.cshtml"><button>تسجيل الدخول</button></a>
+            <a asp-controller="Home" asp-action="Login.cshtml"><button>التسجيل </button></a>
+
+        </div>
+    </header>
+    <div >
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <!-- الشعار -->
+            <div class="footer-section">
+                <img src="logo.png" alt="شعار الموقع" class="footer-logo">
+                <p>موقع بيع وشراء المواشي بكل سهولة وأمان.</p>
+            </div>
+
+            <!-- خدمات -->
+            <div class="footer-section">
+                <h3>الخدمات</h3>
+                <ul>
+                    <li><a href="#">بيع وشراء المواشي</a></li>
+                    <li><a href="#">توفير العلف والفرش</a></li>
+                    <li><a href="#">العضوية المميزة</a></li>
+                </ul>
+            </div>
+
+            <!-- الدعم -->
+            <div class="footer-section">
+                <h3>الدعم</h3>
+                <ul>
+                    <li><a href="#">مساعدة & الأسئلة الشائعة</a></li>
+                    <li><a href="#">تحميل التطبيق</a></li>
+                    <li><a href="#">خريطة الموقع</a></li>
+                </ul>
+            </div>
+
+            <!-- الشركة -->
+            <div class="footer-section">
+                <h3>الشركة</h3>
+                <ul>
+                    <li><a href="#">المدونة والبث الصوتي</a></li>
+                    <li><a href="#">عن الشركة</a></li>
+                    <li><a href="#">الشروط والخصوصية</a></li>
+                    <li><a href="#">إدارة الكوكيز</a></li>
+                </ul>
+            </div>
+
+            <!-- الاشتراك في النشرة الإخبارية -->
+            <div class="footer-section">
+                <h3>اشترك في النشرة الإخبارية</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                    <button type="submit">اشترك</button>
+                </form>
+            </div>
+
+            <!-- مواقع التواصل الاجتماعي -->
+            <div class="footer-section">
+                <h3>تابعنا على</h3>
+                <div class="social-links">
+                    <a href="#"><img src="media/icons8-facebook.svg" alt="فيسبوك"></a>
+                    <a href="#"><img src="media/icons8-x.svg" alt="تويتر"></a>
+                    <a href="#"><img src="media/icons8-instagram (1).svg" alt="إنستجرام"></a>
+                    <a href="#"><img src="media/icons8-youtube.svg" alt="يوتيوب"></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- حقوق النشر -->
+        <div class="footer-bottom">
+            <p>© 2025 موقع بيع وشراء المواشي. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

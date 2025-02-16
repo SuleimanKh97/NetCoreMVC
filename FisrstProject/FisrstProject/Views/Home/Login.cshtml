@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="form-container">
+    <h2 class="form-title">مرحباً بعودتك</h2>
+    <form onsubmit="return validateForm();">
+        <input type="email" id="email" class="form-control" placeholder="الإيميل" required>
+        <div class="input-group">
+            <input type="password" id="password" class="form-control" placeholder="كلمة السر" required>
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary" onclick="togglePassword()">
+                    <i id="toggle-password" class="fas fa-eye"></i>
+                </button>
+            </div>
+        </div>
+        <div class="forgot-password">
+            <a asp-controller="Home" asp-action="ForgotPassword.cshtml"><button>هل نسيت كلمة السر؟ </button></a>
+        </div>
+        <button type="submit" class="btn-main">تسجيل الدخول</button>
+    </form>
+    <p class="signin-link">مستخدم جديد؟ <a href="Reg">إنشاء حساب جديد</a></p>
+</div>
+
+<div class="services-section">
+    <h2 class="services-title">الخدمات الاستشارية</h2>
+    <p class="service-item">✔ استشارات حول اختيار أفضل أنواع المواشي المناسبة لمتطلباتك.</p>
+    <p class="service-item">✔ نصائح حول التغذية السليمة للمواشي.</p>
+    <p class="service-item">✔ إرشادات حول عمليات البيع والشراء بطريقة آمنة وفعّالة.</p>
+    <p class="service-item">✔ دعم فني واستشارات متاحة على مدار الساعة.</p>
+</div>

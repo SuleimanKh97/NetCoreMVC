@@ -1,0 +1,79 @@
+﻿body {
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+    background: url('../media/360_F_473117031_2hND1vrQrU6HPzMvJqpsgMsJk3xV1eHi.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.form-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.btn-main {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    width: 100%;
+}
+
+    .btn-main:hover {
+        background-position: right;
+    }
+
+.signin-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+    .signin-link a {
+        color: #007bff;
+    }
+
+.forgot-password {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+.services-section {
+    margin-top: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+}
+
+.services-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.service-item {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
