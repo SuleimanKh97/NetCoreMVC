@@ -1,0 +1,39 @@
+﻿@{
+	Layout = "Cards";
+	ViewData["Title"] = "Home Page";
+	string[] Product = { "apparm", "dobl", "luxury" };
+	string[] Description = { "apparm", "dobl", "luxury" };
+	string[] Price = { "apparm", "dobl", "luxury" };
+	string[] ImageUrl = { "https://img.freepik.com/free-photo/3d-rendering-beautiful-luxury-bedroom-suite-hotel-with-working-table_105762-2154.jpg?semt=ais_hybrid", "https://img.freepik.com/premium-photo/sofa-collection_1197721-94436.jpg?semt=ais_hybrid", "https://img.freepik.com/free-photo/3d-rendering-beautiful-luxury-bedroom-suite-hotel-with-tv_105762-2301.jpg?semt=ais_hybrid" };
+
+
+
+}
+
+
+@section Styles { 
+
+    <link href="~/css/Cards.css" rel="stylesheet" /> 
+
+ }
+
+ <h2>Etodanry exper when you visit our site</h2>
+<div class="container">
+	<div class="row">
+
+		@for (int i = 0; i < Product.Length; i++)
+		{
+			<div class="card d-flex col-md-3 m-1 ">
+				<img src="@ImageUrl[i]" class="card-img-top  img-fluid" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">@Product[i]</h5>
+					<p class="card-text">@Description[i]</p>
+					<p class="card-text"><small class="text-muted">@Price[i]</small></p>
+				</div>
+			</div>
+		}
+
+
+
+	</div>
+</div>
