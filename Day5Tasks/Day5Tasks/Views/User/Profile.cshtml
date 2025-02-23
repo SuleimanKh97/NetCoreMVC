@@ -1,0 +1,18 @@
+﻿
+
+<h2>Name :@ViewData["name"]</h2>
+<h2>Email :@ViewData["email"]</h2>
+<h2>Password :@ViewData["password"]</h2>
+<h2>Address :
+    @Context.Session.GetString("addresss");
+</h2>
+<h2>Phone Number :
+
+    @Context.Session.GetString("phone");
+    
+</h2>
+
+
+
+
+<a href="@Url.Action("EditProfile", "User")" class="btn btn-primary">Edit Profile</a>

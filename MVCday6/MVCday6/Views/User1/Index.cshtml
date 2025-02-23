@@ -1,0 +1,29 @@
+﻿@model IEnumerable<MVCday6.Models.User1>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Users List</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Id)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Email)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => user.Id)</td>
+                <td>@Html.DisplayFor(modelItem => user.Name)</td>
+                <td>@Html.DisplayFor(modelItem => user.Email)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@Html.ActionLink("Add New User", "Create", "User1", null, new { @class = "btn btn-primary" })

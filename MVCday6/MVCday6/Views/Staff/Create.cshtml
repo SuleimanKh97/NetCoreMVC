@@ -1,0 +1,69 @@
+﻿@model MVCday6.Models.Staff
+
+
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+
+                <input asp-for="Name" class="form-control" />
+
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="ContactInfo" class="control-label"></label>
+
+                <input asp-for="ContactInfo" class="form-control" />
+
+                <span asp-validation-for="ContactInfo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AssignedSection" class="control-label"></label>
+
+                <input asp-for="AssignedSection" class="form-control" />
+
+                <span asp-validation-for="AssignedSection" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EmploymentDate" class="control-label"></label>
+
+                <input asp-for="EmploymentDate" class="form-control" />
+
+                <span asp-validation-for="EmploymentDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Experience" class="control-label"></label>
+
+                <input asp-for="Experience" class="form-control" />
+
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Staff" asp-action="Index">Back to List</a>
+</div>
+
+
