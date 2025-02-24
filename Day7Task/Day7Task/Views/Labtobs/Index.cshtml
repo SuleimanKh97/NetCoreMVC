@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Day7Task.Models.Labtob>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Labtobs Fore sale</h1>
+
+<p>
+	<a asp-action="Create" class="btn btn-outline-success">Create New</a>
+</p>
+
+<div class="container" style="margin-top:50px;">
+
+
+
+	@foreach (var item in Model)
+	{
+		<div class="item">
+			<div class="card-image">
+				<img src="@item.Image" />
+			</div>
+
+			<a class="card-action" href="#"><i class="fa fa-heart"></i></a>
+			<div class="card-heading">
+				@item.Name
+			</div>
+			<div class="card-text">
+				@item.Description
+			</div>
+			<div class="card-text">
+				<h4>@item.Price $$</h4>
+			</div>
+			<div class="card-button g-2 p-2">
+				<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark"> Purchase</a>
+
+				<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Edit</a>
+				<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+			</div>
+		</div>
+	}
+
+
+</div>
