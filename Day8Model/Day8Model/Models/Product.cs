@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace Day8Model.Models;
 
-public partial class User1
+public partial class Product
 {
     public int Id { get; set; }
 
     public string? Name { get; set; }
 
-    public string? Password { get; set; }
+    public int? Price { get; set; }
 
-    public string? Email { get; set; }
+    public string? Description { get; set; }
+
+    public string? Image { get; set; }
 }

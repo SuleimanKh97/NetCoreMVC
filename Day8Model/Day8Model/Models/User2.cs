@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Day8Model.Models;
 
-public partial class User1
+public partial class User2
 {
     public int Id { get; set; }
 

@@ -1,4 +1,7 @@
 ﻿@model IEnumerable<Day8Model.Models.Product>
+@{
+	Layout = "_LayoutA";
+}
 
 
 
@@ -23,12 +26,12 @@
 			<div class="card-text">
 				<h4>@item.Price $$</h4>
 			</div>
-			@* <div class="card-button g-2 p-2">
+			<div class="card-button g-2 p-2">
 				<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-dark"> Purchase</a>
 
 				<a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-dark">Edit</a>
 				<a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
-			</div> *@
+			</div>
 		</div>
 	}
 

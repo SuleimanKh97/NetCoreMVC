@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Day8Model.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Day8Model.Controllers
 {
@@ -15,14 +16,44 @@ namespace Day8Model.Controllers
         // GET: UserController
         public ActionResult Index()
         {
-            
-            return View();
+            var products = DB.Products.ToList();
+            return View(products);
         }
 
         // GET: UserController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details()
         {
-            return View();
+            var userloged = HttpContext.Session.GetInt32("IDuser");
+            var userdetails = DB.User2s.Find(userloged);
+            return View(userdetails);
+        }
+
+
+
+        public IActionResult EditProfile(int? id)
+        {
+            var userloged = HttpContext.Session.GetInt32("IDuser");
+
+            var profile = DB.User2s.Find(userloged);
+
+            return View(profile);
+        }
+
+
+        [HttpPost]
+        public IActionResult EditProfile(User2 user)
+        {
+
+
+
+
+            DB.Update(user);
+            DB.SaveChanges();
+
+
+            return RedirectToAction(nameof(Details));
+
+
         }
 
         // GET: UserController/Create
@@ -34,14 +65,14 @@ namespace Day8Model.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult regiester(User1 user)
+        public ActionResult regiester(User2 user)
         {
             try
             {
                 DB.User1s.Add(user);
                 DB.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Login));
             }
             catch
             {
@@ -57,15 +88,19 @@ namespace Day8Model.Controllers
 
         // POST: UserController/Edit/5
         [HttpPost]
-        public ActionResult Login(int id, User1 user)
+        public ActionResult Login(int id, User2 user)
         {
             try
             {
-                var user1 = DB.User1s.FirstOrDefault(x => x.Email == user.Email && x.Name == user.Name);
-                if (user1 != null)
+                var User2 = DB.User2s.FirstOrDefault(x => x.Email == user.Email && x.Password == user.Password);
+                if (user.Email=="admin@admin.com" && user.Password=="admin")
                 {
-                    TempData["UserName"] = user.Name;
+                    return RedirectToAction("Index" , "Admin");
+                }
+                if (User2 != null)
+                {
 
+                    HttpContext.Session.SetInt32("IDuser", User2.Id);
                     return RedirectToAction(nameof(Index));
                 }
                 else
