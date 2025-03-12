@@ -1,0 +1,119 @@
+@model HRManagement.ViewModels.EmployeeDashboardViewModel
+
+@{
+    ViewData["Title"] = "Employee Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <h1 class="mb-4">Employee Dashboard</h1>
+
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header">
+                    <h5 class="mb-0">Today's Attendance</h5>
+                </div>
+                <div class="card-body">
+                    @{
+                        var todayAttendance = Model.RecentAttendances
+                            .FirstOrDefault(a => a.Date.Date == DateTime.Today);
+                    }
+                    @if (todayAttendance == null)
+                    {
+                        <form asp-action="PunchIn" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt"></i> Punch In
+                            </button>
+                        </form>
+                    }
+                    else if (!todayAttendance.PunchOut.HasValue)
+                    {
+                        <p>Punched in at: @todayAttendance.PunchIn.ToString("HH:mm")</p>
+                        <form asp-action="PunchOut" method="post" style="display: inline;">
+                            <button type="submit" class="btn btn-warning">
+                                <i class="fas fa-sign-out-alt"></i> Punch Out
+                            </button>
+                        </form>
+                    }
+                    else
+                    {
+                        <p>Punched in at: @todayAttendance.PunchIn.ToString("HH:mm")</p>
+                        <p>Punched out at: @todayAttendance.PunchOut.Value.ToString("HH:mm")</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">My Tasks</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var task in Model.Tasks)
+                        {
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">@task.Title</h6>
+                                        <p class="card-text small">@task.Description</p>
+                                        <p class="card-text">
+                                            <small class="text-muted">Due: @task.DueDate.ToString("g")</small>
+                                        </p>
+                                        @if (task.Status != TaskStatus.Done)
+                                        {
+                                            <form asp-action="UpdateTaskStatus" method="post">
+                                                <input type="hidden" name="taskId" value="@task.Id" />
+                                                <input type="hidden" name="newStatus" 
+                                                       value="@(task.Status == TaskStatus.ToDo ? 
+                                                              TaskStatus.Doing : TaskStatus.Done)" />
+                                                <button type="submit" class="btn btn-sm btn-primary">
+                                                    @(task.Status == TaskStatus.ToDo ? "Start" : "Complete")
+                                                </button>
+                                            </form>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Leave Requests</h5>
+                    <a asp-action="RequestLeave" class="btn btn-sm btn-primary">
+                        <i class="fas fa-plus"></i> New Request
+                    </a>
+                </div>
+                <div class="card-body">
+                    @foreach (var leave in Model.LeaveRequests)
+                    {
+                        <div class="card mb-2">
+                            <div class="card-body">
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    @leave.StartDate.ToShortDateString() - @leave.EndDate.ToShortDateString()
+                                </h6>
+                                <p class="card-text small">@leave.Reason</p>
+                                <span class="badge @(leave.Status switch {
+                                    LeaveStatus.Pending => "bg-warning",
+                                    LeaveStatus.Approved => "bg-success",
+                                    LeaveStatus.Rejected => "bg-danger",
+                                    _ => "bg-secondary"
+                                })">
+                                    @leave.Status
+                                </span>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
