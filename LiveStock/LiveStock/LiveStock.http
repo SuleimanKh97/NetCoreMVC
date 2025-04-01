@@ -1,0 +1,6 @@
+@LiveStock_HostAddress = http://localhost:5177
+
+GET {{LiveStock_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
