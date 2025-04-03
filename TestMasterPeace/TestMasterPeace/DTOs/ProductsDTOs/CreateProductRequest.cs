@@ -4,8 +4,9 @@ namespace TestMasterPeace.DTOs.ProductsDTOs;
 
 public class CreateProductRequest
 {
-    public string Name { get; set; } = null!;
-    public string? Description { get; set; }
-    public decimal Price { get; set; }
-    public long? CategoryId { get; set; }
+    public required  string Name { get; set; }
+    public required string? Description { get; set; }
+    public required decimal Price { get; set; }
+    public required long? CategoryId { get; set; }
+
 }
