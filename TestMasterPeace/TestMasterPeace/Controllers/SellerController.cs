@@ -52,6 +52,7 @@ namespace TestMasterPeace.Controllers
                 Description = newProduct.Description,
                 Price = newProduct.Price,
                 CategoryId = newProduct.CategoryId,
+                Img = newProduct.Img,
                 CreatedAt = DateTime.Now
             };
             newproduct.SellerId = seller.Id;

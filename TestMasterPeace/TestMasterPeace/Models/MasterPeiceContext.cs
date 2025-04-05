@@ -43,7 +43,7 @@ public partial class MasterPeiceContext : DbContext
     {
         modelBuilder.Entity<Cart>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Cart__3213E83F99824C24");
+            entity.HasKey(e => e.Id).HasName("PK__Cart__3213E83FF3164D7F");
 
             entity.ToTable("Cart");
 
@@ -58,16 +58,16 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__Cart__product_id__72C60C4A");
+                .HasConstraintName("FK__Cart__product_id__11158940");
 
             entity.HasOne(d => d.User).WithMany(p => p.Carts)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Cart__user_id__71D1E811");
+                .HasConstraintName("FK__Cart__user_id__10216507");
         });
 
         modelBuilder.Entity<Category>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Categori__3213E83F7827D4C5");
+            entity.HasKey(e => e.Id).HasName("PK__Categori__3213E83FDE90880F");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Description)
@@ -80,7 +80,7 @@ public partial class MasterPeiceContext : DbContext
 
         modelBuilder.Entity<ContactU>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__ContactU__3213E83F1BAF796C");
+            entity.HasKey(e => e.Id).HasName("PK__ContactU__3213E83F7C0D2235");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CreatedAt)
@@ -94,12 +94,12 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.ContactUs)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__ContactUs__user___6E01572D");
+                .HasConstraintName("FK__ContactUs__user___0C50D423");
         });
 
         modelBuilder.Entity<Feedback>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Feedback__3213E83F32375242");
+            entity.HasKey(e => e.Id).HasName("PK__Feedback__3213E83F66857FA9");
 
             entity.ToTable("Feedback");
 
@@ -117,16 +117,16 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.Product).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__Feedback__produc__68487DD7");
+                .HasConstraintName("FK__Feedback__produc__078C1F06");
 
             entity.HasOne(d => d.User).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Feedback__user_i__6754599E");
+                .HasConstraintName("FK__Feedback__user_i__0697FACD");
         });
 
         modelBuilder.Entity<Order>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Orders__3213E83FB9890C7E");
+            entity.HasKey(e => e.Id).HasName("PK__Orders__3213E83F5BEFD317");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CreatedAt)
@@ -143,12 +143,12 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.User).WithMany(p => p.Orders)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Orders__user_id__76969D2E");
+                .HasConstraintName("FK__Orders__user_id__14E61A24");
         });
 
         modelBuilder.Entity<OrderItem>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__OrderIte__3213E83F83BFCBF7");
+            entity.HasKey(e => e.Id).HasName("PK__OrderIte__3213E83F43D561D3");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
@@ -160,16 +160,16 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__OrderItem__order__7A672E12");
+                .HasConstraintName("FK__OrderItem__order__18B6AB08");
 
             entity.HasOne(d => d.Product).WithMany(p => p.OrderItems)
                 .HasForeignKey(d => d.ProductId)
-                .HasConstraintName("FK__OrderItem__produ__7B5B524B");
+                .HasConstraintName("FK__OrderItem__produ__19AACF41");
         });
 
         modelBuilder.Entity<Partner>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Partners__3213E83F4F72A117");
+            entity.HasKey(e => e.Id).HasName("PK__Partners__3213E83F32CF4D84");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.ContactInfo)
@@ -182,7 +182,7 @@ public partial class MasterPeiceContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Products__3213E83F5A351907");
+            entity.HasKey(e => e.Id).HasName("PK__Products__3213E83F1E3C4ED9");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CategoryId).HasColumnName("category_id");
@@ -193,6 +193,9 @@ public partial class MasterPeiceContext : DbContext
             entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .HasColumnName("description");
+            entity.Property(e => e.Img)
+                .IsUnicode(false)
+                .HasColumnName("img");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .HasColumnName("name");
@@ -203,16 +206,16 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.Category).WithMany(p => p.Products)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__Products__catego__628FA481");
+                .HasConstraintName("FK__Products__catego__01D345B0");
 
             entity.HasOne(d => d.Seller).WithMany(p => p.Products)
                 .HasForeignKey(d => d.SellerId)
-                .HasConstraintName("FK__Products__seller__6383C8BA");
+                .HasConstraintName("FK__Products__seller__02C769E9");
         });
 
         modelBuilder.Entity<Transaction>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Transact__3213E83F1A0A86F9");
+            entity.HasKey(e => e.Id).HasName("PK__Transact__3213E83F84653F3B");
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.Amount)
@@ -229,14 +232,14 @@ public partial class MasterPeiceContext : DbContext
 
             entity.HasOne(d => d.Order).WithMany(p => p.Transactions)
                 .HasForeignKey(d => d.OrderId)
-                .HasConstraintName("FK__Transacti__order__00200768");
+                .HasConstraintName("FK__Transacti__order__1E6F845E");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Users__3213E83F6F4AB6EC");
+            entity.HasKey(e => e.Id).HasName("PK__Users__3213E83F20856BF4");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__AB6E616439EF4C4E").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__AB6E61648E7CC03B").IsUnique();
 
             entity.Property(e => e.Id).HasColumnName("id");
             entity.Property(e => e.CreatedAt)

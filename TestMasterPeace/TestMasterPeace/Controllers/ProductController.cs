@@ -25,6 +25,7 @@ public class ProductController(MasterPeiceContext context) : ControllerBase
             Description = newProduct.Description,
             Price = newProduct.Price,
             CategoryId = newProduct.CategoryId,
+            Img = newProduct.Img,
             CreatedAt = DateTime.Now
         };
 

@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.OpenApi;
-using Microsoft.EntityFrameworkCore;
-using TestMasterPeace.Models;
 
 namespace TestMasterPeace.Models;
 
@@ -31,5 +27,3 @@ public partial class User
 
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
-
-

@@ -19,6 +19,8 @@ public partial class Product
 
     public DateTime? CreatedAt { get; set; }
 
+    public string? Img { get; set; }
+
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual Category? Category { get; set; }
